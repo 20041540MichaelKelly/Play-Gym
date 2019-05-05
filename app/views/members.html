@@ -1,0 +1,126 @@
+#{extends 'main.html' /}
+#{set title:'Members' /}
+
+#{menu id:"members"/}
+
+
+<section class="ui segment">
+    <table class="ui fixed table">
+        <thead>
+        <tr>
+            <th>
+                <div class="ui statistics">
+                    <div class="statistic">
+                        <div class="value">
+                            <i class="user icon"></i>
+                        </div>
+                        <div class="label">
+                        ${member.name}
+                        </div>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="ui statistics">
+                    <div class="statistic">
+                        <div class="value">
+                            <i class="${member.isIdealBodyWeight()} tachometer alternate icon"></i>
+                        </div>
+                        <div class="label">
+                            Ideal Body Weight Indicator
+                        </div>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="ui statistics">
+                    <div class="statistic">
+                        <div class="value">
+                            <i class="heartbeat icon"></i>
+                        ${member.getBmi()}
+
+                        </div>
+                        <div class="label">
+                            BMI
+                        </div>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="ui statistics">
+                    <div class="statistic">
+                        <div class="value">
+                            <i class="doctor icon"></i>
+                        </div>
+                        <div class="label">
+                        ${member.getWeightClass()}
+                        </div>
+                    </div>
+                </div>
+            </th>
+        </tr>
+        </thead>
+    </table>
+</section>
+#{list items:assessments, as:'assessments'}
+
+<section class="ui raised segment">
+    <table class="ui fixed table">
+        <thead>
+        <tr>
+            <th>Weight</th>
+            <th>Chest</th>
+            <th>Thigh</th>
+            <th>Upper Arm</th>
+            <th>Waist</th>
+            <th>Hips</th>
+            <th>Comment</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+            ${assessments.weight}
+            </td>
+            <td>
+            ${assessments.chest}
+            </td>
+            <td>
+            ${assessments.thigh}
+            </td>
+            <td>
+            ${assessments.upperArm}
+            </td>
+            <td>
+            ${assessments.waist}
+            </td>
+            <td>
+            ${assessments.hips}
+            </td>
+            <td>
+            ${assessments.comment}
+            </td>
+            <td>
+                <a href="/dashboard/${member.id}/deleteassessments/${assessments.id} " class="ui tiny red button">
+                    <i class="trash icon"></i>
+                    </i>Delete
+                </a>
+            </td>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="7">
+                <form class="ui  form" action="/dashboard/${assessments.id}/updateassessments" method="POST">
+                    <div class="field">
+                        <label>Comments</label>
+                        <input placeholder="" type="text" name="comments">
+                    </div>
+                    <button class="ui blue submit button">Update</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+#{/list}
+</section>

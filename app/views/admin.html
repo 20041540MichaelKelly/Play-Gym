@@ -1,0 +1,49 @@
+#{extends 'main.html' /}
+#{set title:'Admin' /}
+
+
+<section class="ui segment">
+    <h2 class="ui header">
+        All Known Enteries in the Database:
+    </h2>
+    <table class="ui fixed table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Weight</th>
+            <th>Chest</th>
+            <th>Thigh</th>
+            <th>Upper Arm</th>
+            <th>Waist</th>
+            <th>Hips</th>
+        </tr>
+        </thead>
+        <tbody>
+        #{list items:assessments, as:'assessments'}
+        <tr>
+            <td>
+            ${assessments.id}
+            </td>
+            <td>
+            ${assessments.weight}
+            </td>
+            <td>
+            ${assessments.chest}
+            </td>
+            <td>
+            ${assessments.thigh}
+            </td>
+            <td>
+            ${assessments.upperArm}
+            </td>
+            <td>
+            ${assessments.waist}
+            </td>
+            <td>
+            ${assessments.hips}
+            </td>
+        </tr>
+        #{/list}
+        </tbody>
+    </table>
+</section>
